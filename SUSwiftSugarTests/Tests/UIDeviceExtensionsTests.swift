@@ -16,7 +16,7 @@ class UIDeviceExtensionsTests: XCTestCase {
     
     func testPlatform() {
         func isCorrectPlatform(target target: DeviceType, identifiers: [String]) {
-            identifiers.each {
+            identifiers.forEach {
                 XCTAssertEqual(DeviceModel(identifier: $0).type, target)
             }
         }

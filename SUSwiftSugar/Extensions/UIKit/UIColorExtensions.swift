@@ -32,7 +32,7 @@ extension UIColor {
             self.init(CGColor: UIColor.clearColor().CGColor)
             return
         }
-        prefixes.each({ hexString <-> ($0, "")})
+        prefixes.forEach { hexString <-> ($0, "")}
         
         let scanner = NSScanner(string: hexString)
         var color: UInt32 = 0

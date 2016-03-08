@@ -34,6 +34,7 @@
 		4D09BFE01C5E39F400F50B59 /* TypeNameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D09BFD71C5E39F400F50B59 /* TypeNameTests.swift */; };
 		4D09BFE11C5E39F400F50B59 /* UIColorExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D09BFD81C5E39F400F50B59 /* UIColorExtensionsTests.swift */; };
 		4D09BFE21C5E39F400F50B59 /* UIDeviceExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D09BFD91C5E39F400F50B59 /* UIDeviceExtensionsTests.swift */; };
+		4D3C38331C8F08C700A66CB6 /* NSLocaleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3C38321C8F08C700A66CB6 /* NSLocaleExtensions.swift */; };
 		4DA57ABC1C5E38D800E381AE /* SUSwiftSugar.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DA57ABB1C5E38D800E381AE /* SUSwiftSugar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4DA57AC31C5E38D800E381AE /* SUSwiftSugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA57AB81C5E38D800E381AE /* SUSwiftSugar.framework */; };
 		4DA57AC81C5E38D800E381AE /* SUSwiftSugarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA57AC71C5E38D800E381AE /* SUSwiftSugarTests.swift */; };
@@ -77,6 +78,7 @@
 		4D09BFD71C5E39F400F50B59 /* TypeNameTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeNameTests.swift; sourceTree = "<group>"; };
 		4D09BFD81C5E39F400F50B59 /* UIColorExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensionsTests.swift; sourceTree = "<group>"; };
 		4D09BFD91C5E39F400F50B59 /* UIDeviceExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensionsTests.swift; sourceTree = "<group>"; };
+		4D3C38321C8F08C700A66CB6 /* NSLocaleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLocaleExtensions.swift; sourceTree = "<group>"; };
 		4DA57AB81C5E38D800E381AE /* SUSwiftSugar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SUSwiftSugar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DA57ABB1C5E38D800E381AE /* SUSwiftSugar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUSwiftSugar.h; sourceTree = "<group>"; };
 		4DA57ABD1C5E38D800E381AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				4D09BFA81C5E39DE00F50B59 /* NSBundleExtensions.swift */,
 				4D09BFA91C5E39DE00F50B59 /* NSFileManagerExtensions.swift */,
 				4D09BFAA1C5E39DE00F50B59 /* NSObjectExtensions.swift */,
+				4D3C38321C8F08C700A66CB6 /* NSLocaleExtensions.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				4D09BFCF1C5E39DE00F50B59 /* Instantiatable.swift in Sources */,
 				4D09BFCB1C5E39DE00F50B59 /* UIViewExtensions.swift in Sources */,
 				4D09BFC81C5E39DE00F50B59 /* UIColorExtensions.swift in Sources */,
+				4D3C38331C8F08C700A66CB6 /* NSLocaleExtensions.swift in Sources */,
 				4D09BFCE1C5E39DE00F50B59 /* EnumCountable.swift in Sources */,
 				4D09BFC31C5E39DE00F50B59 /* IntExtensions.swift in Sources */,
 				4D09BFC01C5E39DE00F50B59 /* NSObjectExtensions.swift in Sources */,

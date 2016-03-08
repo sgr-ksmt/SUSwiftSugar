@@ -3,57 +3,30 @@
 
 import Foundation
 
-class EnumGenerator<Enum : Hashable> : GeneratorType {
-    
-    var rawEnum = 0
-    var done = false
-    
-    func next() -> Enum? {
-        if done { return nil }
-        
-        let enumCase = withUnsafePointer(&rawEnum) { UnsafePointer<Enum>($0).memory }
-        if enumCase.hashValue == rawEnum {
-            rawEnum++
-            return enumCase
-        } else {
-            done = true
-            return nil
+public protocol EnumEnumerable {
+    typealias Case = Self
+}
+
+public extension EnumEnumerable where Case: Hashable {
+    private static var generator: AnyGenerator<Case> {
+        var n = 0
+        return anyGenerator {
+            defer { n += 1 }
+            let next = withUnsafePointer(&n) { UnsafePointer<Case>($0).memory }
+            return next.hashValue == n ? next : nil
         }
     }
     
-}
-
-class SingleEnumGenerator<Enum : Hashable> : EnumGenerator<Enum> {
-    
-    override func next() -> Enum? {
-        return done ? nil : { done = true; return unsafeBitCast((), Enum.self) }()
+    @warn_unused_result
+    public static func enumerate() -> EnumerateSequence<AnySequence<Case>> {
+        return EnumerateSequence(AnySequence(generator))
     }
     
-}
-
-struct EnumSequence<Enum : Hashable> : SequenceType {
-    
-    func generate() -> EnumGenerator<Enum> {
-        switch sizeof(Enum) {
-        case 0: return SingleEnumGenerator()
-        default: return EnumGenerator()
-        }
+    public static var cases: [Case] {
+        return Array(generator)
     }
     
-}
-
-protocol EnumCountable {
-    typealias Element = Self
-}
-
-extension EnumCountable where Element: Hashable {
-    
-    static func elements() -> [Element] {
-        return Array(EnumSequence())
+    public static var count: Int {
+        return cases.count
     }
-    
-    static var count: Int {
-        return elements().count
-    }
-    
 }

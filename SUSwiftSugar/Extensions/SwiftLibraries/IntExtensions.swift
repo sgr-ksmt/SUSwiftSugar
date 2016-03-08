@@ -5,13 +5,9 @@ import Foundation
 
 // MARK: - convenience computed properties
 extension Int {
-    
     var isPositive: Bool { return self >= 0 }
-    
     var isNegative: Bool { return self < 0 }
-    
     var isEven: Bool { return self % 2 == 0 }
-    
     var isOdd: Bool { return self % 2 != 0 }
 }
 
@@ -33,9 +29,7 @@ extension Int {
 
 // MARK: - times like ruby `times`
 extension Int {
-    
-    func times(@noescape block: (Int) -> Void) {
-        if self<=0{return};for i in 0..<self{block(i)}
+    func times(@noescape block: Int -> Void) {
+        (0..<(self > 0 ? self : 0)).forEach(block)
     }
-    
 }

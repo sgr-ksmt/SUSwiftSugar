@@ -19,58 +19,58 @@ func * (lhs: String, rhs: Int) -> String {
 
 extension String {
     
-    func to_ns() -> NSString {
+    private var ns: NSString {
         return (self as NSString)
     }
     
     func substringFromIndex(index: Int) -> String {
-        return to_ns().substringFromIndex(index)
+        return ns.substringFromIndex(index)
     }
     
     func substringToIndex(index: Int) -> String {
-        return to_ns().substringToIndex(index)
+        return ns.substringToIndex(index)
     }
     
     func substringWithRange(range: NSRange) -> String {
-        return to_ns().substringWithRange(range)
+        return ns.substringWithRange(range)
     }
     
     var lastPathComponent: String {
-        return to_ns().lastPathComponent
+        return ns.lastPathComponent
     }
     
     var pathExtension: String {
-        return to_ns().pathExtension
+        return ns.pathExtension
     }
     
     var stringByDeletingLastPathComponent: String {
-        return to_ns().stringByDeletingLastPathComponent
+        return ns.stringByDeletingLastPathComponent
     }
     
     var stringByDeletingPathExtension: String {
-        return to_ns().stringByDeletingPathExtension
+        return ns.stringByDeletingPathExtension
     }
     
     var pathComponents: [String] {
-        return to_ns().pathComponents
+        return ns.pathComponents
     }
     
     var length: Int {
-        return self.characters.count
+        return characters.count
     }
     
     var range: NSRange {
-        return NSMakeRange(0, self.length)
+        return NSMakeRange(0, length)
     }
     
     func stringByAppendingPathComponent(path: String) -> String {
-        return to_ns().stringByAppendingPathComponent(path)
+        return ns.stringByAppendingPathComponent(path)
     }
     
     func stringByAppendingPathExtension(ext: String) -> String? {
-        return to_ns().stringByAppendingPathExtension(ext)
+        return ns.stringByAppendingPathExtension(ext)
     }
-
+    
 }
 
 extension String {

@@ -32,32 +32,24 @@ extension Array {
     
 }
 
-// MARK: - each/any/none/all/one
-extension Array {
+// MARK: - any/none/all/one
+extension SequenceType {
 
-    func each(@noescape block: Element -> Void) {
-        for item in self { block(item) }
-    }
-    
-    func eachWithIndex(@noescape block: (Element, Int) -> Void) {
-        for (i, item) in self.enumerate() { block(item, i) }
-    }
-    
-    func any(@noescape block: (Element -> Bool)) -> Bool {
+    func any(@noescape block: (Self.Generator.Element -> Bool)) -> Bool {
         for item in self { if block(item) { return true }}
         return false
     }
 
-    func none(@noescape block: (Element -> Bool)) -> Bool {
+    func none(@noescape block: (Self.Generator.Element -> Bool)) -> Bool {
         return !any(block)
     }
 
-    func all(@noescape block: (Element -> Bool)) -> Bool {
+    func all(@noescape block: (Self.Generator.Element -> Bool)) -> Bool {
         for item in self { if !block(item) { return false }}
         return true
     }
 
-    func one(@noescape block: (Element -> Bool)) -> Bool {
+    func one(@noescape block: (Self.Generator.Element -> Bool)) -> Bool {
         return self.filter(block).count == 1
     }
 
@@ -72,7 +64,7 @@ extension Array {
     }
     
     @warn_unused_result
-    func shuffledArray() -> [Element] {
+    func shuffled() -> [Element] {
         var result = self
         for var j = result.count - 1; j > 0; j-- {
             let k = Int(arc4random_uniform(UInt32(j + 1)))
@@ -83,13 +75,13 @@ extension Array {
     }
     
     mutating func shuffle() {
-        self = self.shuffledArray()
+        self = self.shuffled()
     }
     
 }
 
 // MARK: - Unique(remove duplicates)
-extension Array where Element: Hashable {
+extension Array where Element: Equatable {
     
     @warn_unused_result
     static func unique(source: [Element]) -> [Element] {

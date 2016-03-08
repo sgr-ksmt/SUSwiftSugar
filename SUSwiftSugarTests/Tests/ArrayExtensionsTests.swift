@@ -46,7 +46,7 @@ class ArrayExtensionTests: XCTestCase {
         var resultWithBlock = [Int]()
         
         for x in array { resultWithLoop.append(x) }
-        array.each { resultWithBlock.append($0) }
+        array.forEach { resultWithBlock.append($0) }
         
         XCTAssertEqual(resultWithLoop, resultWithBlock)
         
@@ -57,12 +57,12 @@ class ArrayExtensionTests: XCTestCase {
             resultWithLoop.append(x * (index + 1))
         }
         
-        array.eachWithIndex { resultWithBlock.append($0.0) }
+        array.enumerate().forEach { resultWithBlock.append($0.0) }
         XCTAssertNotEqual(resultWithLoop, resultWithBlock)
         
         resultWithBlock = []
 
-        array.eachWithIndex { resultWithBlock.append($0.0 * ($0.1 + 1)) }
+        array.enumerate().forEach { resultWithBlock.append($0.1 * ($0.0 + 1)) }
         XCTAssertEqual(resultWithLoop, resultWithBlock)
     }
     
@@ -119,7 +119,7 @@ class ArrayExtensionTests: XCTestCase {
     
     func test_shuffhe() {
         var array = [Int](0..<10)
-        XCTAssertNotEqual(array, array.shuffledArray())
+        XCTAssertNotEqual(array, array.shuffled())
         
         let tmp = array
         array.shuffle()

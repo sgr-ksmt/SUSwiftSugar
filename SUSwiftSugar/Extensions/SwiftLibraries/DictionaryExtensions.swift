@@ -10,8 +10,8 @@ extension Dictionary {
     
     func union(with: Dictionary) -> Dictionary {
         var tmp = self
-        for (k, v) in with {
-            tmp.updateValue(v, forKey: k)
+        with.forEach {
+            tmp.updateValue($0.1, forKey: $0.0)
         }
         return tmp
     }
@@ -20,8 +20,7 @@ extension Dictionary {
 
 extension Dictionary where Value: Equatable {
     func allKeysForValue(value: Value) -> [Key] {
-        return self.flatMap({ $0.1 == value ? $0.0 : nil })
-        //        return self.filter({ $0.1 == value }).map({ $0.0 })
+        return self.flatMap { $0.1 == value ? $0.0 : nil }
     }
     func keyForValue(value: Value) -> Key? {
         return allKeysForValue(value).first
