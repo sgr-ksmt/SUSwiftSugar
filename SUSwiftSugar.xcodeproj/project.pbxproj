@@ -39,6 +39,7 @@
 		4DA57ABC1C5E38D800E381AE /* SUSwiftSugar.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DA57ABB1C5E38D800E381AE /* SUSwiftSugar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4DA57AC31C5E38D800E381AE /* SUSwiftSugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA57AB81C5E38D800E381AE /* SUSwiftSugar.framework */; };
 		4DA57AC81C5E38D800E381AE /* SUSwiftSugarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA57AC71C5E38D800E381AE /* SUSwiftSugarTests.swift */; };
+		4DABF40F1C8FB2B800F17262 /* EnhancedErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DABF40E1C8FB2B800F17262 /* EnhancedErrorType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		4DA57AC21C5E38D800E381AE /* SUSwiftSugarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SUSwiftSugarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DA57AC71C5E38D800E381AE /* SUSwiftSugarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUSwiftSugarTests.swift; sourceTree = "<group>"; };
 		4DA57AC91C5E38D800E381AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DABF40E1C8FB2B800F17262 /* EnhancedErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnhancedErrorType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 			children = (
 				4D09BFBC1C5E39DE00F50B59 /* EnumCountable.swift */,
 				4D09BFBD1C5E39DE00F50B59 /* Instantiatable.swift */,
+				4DABF40E1C8FB2B800F17262 /* EnhancedErrorType.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				4D09BFBF1C5E39DE00F50B59 /* NSFileManagerExtensions.swift in Sources */,
 				4D09BFBE1C5E39DE00F50B59 /* NSBundleExtensions.swift in Sources */,
 				4D09BFCF1C5E39DE00F50B59 /* Instantiatable.swift in Sources */,
+				4DABF40F1C8FB2B800F17262 /* EnhancedErrorType.swift in Sources */,
 				4D09BFCB1C5E39DE00F50B59 /* UIViewExtensions.swift in Sources */,
 				4D09BFC81C5E39DE00F50B59 /* UIColorExtensions.swift in Sources */,
 				4D3C38331C8F08C700A66CB6 /* NSLocaleExtensions.swift in Sources */,

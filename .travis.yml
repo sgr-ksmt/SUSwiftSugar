@@ -1,0 +1,41 @@
+language: objective-c
+osx_image: xcode7.2
+xcode_project: SUSwiftSugar.xcodeproj
+xcode_scheme: SUSwiftSugar
+xcode_sdk: iphonesimulator9.2
+env:
+  global:
+  - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=9.2"
+  - FRAMEWORK_NAME="SUSwiftSugar"
+branches:
+  only:
+  - master
+  - develop
+  - "/^v?[0-9\\.]+/"
+before_install:
+- brew update
+- brew unlink carthage
+- brew install carthage
+script:
+- pod lib lint
+- set -o pipefail
+- xctool -project "$TRAVIS_XCODE_PROJECT" -scheme "$TRAVIS_XCODE_SCHEME" -sdk iphonesimulator
+  ONLY_ACTIVE_ARCH=NO | xcpretty -c
+- xcodebuild test -project "$TRAVIS_XCODE_PROJECT" -scheme "$TRAVIS_XCODE_SCHEME"
+  -destination "$DESTINATION" | xcpretty -c
+before_deploy:
+- carthage build --no-skip-current
+- carthage archive "$FRAMEWORK_NAME"
+deploy:
+  provider: releases
+  api_key:
+    secure: YdlmchubknV6LUMZFJcqk5koC7a2Hy/LDXbXhAxstpKXY1ePYootDpaAqMee6Y5R+angy8J8jlg2blOlplGor782gUePzBfNKqS4rA0Yc2N7WrhEy0WmbtfElw+vQRph/9xaNDsOTU97zzt0Xhkikkyg++ZsnjMP+RDUPGc+U3aXO8lDai8cj5Vk10yQe6TAVf7jQ0lr4wxyQX8OD+OiYouEmG6fKsInGhz+DUvBcQERr2gg38yDi8c7MhuKgsN2oAd2HET6hdJSKhFXbpn0PAQjpjXNhess8m8kGAAe1UTU5MuWzjG5eyXXhxz/HOzL0Wh+OA+8QOOCY+qcotmvpGgfl2sbjukDC8jRpX/NgaLX2Lq54RtmniZsP5QzsKy3VpgJERTdLOT9WLXOC9PAU2+KR88G2rpiiBRy8M4L9wwWZyYFxqweCjdL7MJQc4f00lmXaNnV/XxK75ZWcT4aZ323tbTHjuJwEtQVLbK9ORGW+45VdoBDVnsfdVswRHJDDTO4pLy31Qx2mU8NwUmrr8qtjTAbu6x00FEllyjqih25Tkn41R9c2/yzAz2zBOLUc5KCcmPAZ1gOLHChwKx3AZB2758phuB2jhCdc60NwTVSSpW7zf3LzF/n65/sHDw3TUk5EbE4NIJuxUBjlE3Ond/BCbuktntPBqIG4kCyzSE=
+  file: "$FRAMEWORK_NAME.framework.zip"
+  skip_cleanup: true
+  on:
+    repo: "$TRAVIS_REPO_SLUG"
+    tags: true
+notifications:
+  email: false
+  slack:
+    secure: g4xZWffoVbcScW7534/dlwm8OZ1diECOeJfWFRcLGzWDd6H0RtSKuk8ebFOLciNYDOjlf8H9+gktR1jis+jN1vv75SSKIhPqFJ2/B8srdha3EFEyFxzuIbCa2+1vbw/Y6z+Jb7+GGSzId+JVnoCsDlhxY8RLY23E5IJ1O2YCO4XSeothc1U5GNXlNhI6vKD6BSGD2oy15K6C1bAY0YkqSGVyGBBRbbczEjpeljHfw7BiGPfrTVJ65tCHzw9ZtIkevdA+LYSpcJ0EkF6i15xMViOzlxqr+s/6ABcf+9BYfpTlXQqLtqXOw1Ig+Cx4j7ORs/g6MFuEOSlNyXbsJ7gTDmiUuu+HnCcz2Moye45g8SOM5gOlDUOy8j+IALgFWdeeoIZLaAXr+U+trbvPLwRiOzryXYIAzIX5rjWz4Hm5eK1KmaCZX60hJm0z2RQ4q8PRJJLFkOY11xAldlS5tuVZBzPkBA6QJsW6UgON+5YjHjqPx0PSOTrvwY8PHvqrHbC4JvlKq1X42Ca/IN/Ac79G7GrWyAv9RKT68yQQKNa8p0ivb83EgmPAMXKzYRNUmbXyy+Ee/xUVUTs/Mm6tC+VkgFa4Df12JGh/9c7HAYac4zBqoJYABcQLmp43CbxHD1G9j2UnU60IWB5/aefMUeKS2HMbvZXazWp6wMQ0YKWawxc=
