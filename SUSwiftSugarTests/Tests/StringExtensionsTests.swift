@@ -21,7 +21,7 @@ class StringExtensionsTests: XCTestCase {
         
         XCTAssertEqual(str.substringFromIndex(2), "ple")
         XCTAssertEqual(str.substringToIndex(2), "Ap")
-        XCTAssertEqual(str.substringWithRange(NSMakeRange(1, 3)), "ppl")
+        XCTAssertEqual(str.substringWithRange(NSRange(location: 1, length: 3)), "ppl")
         
         var path = "path/to/hoge.txt"
         XCTAssertEqual(path.lastPathComponent, "hoge.txt")

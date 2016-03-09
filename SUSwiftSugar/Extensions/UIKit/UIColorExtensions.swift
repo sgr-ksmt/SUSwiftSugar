@@ -28,7 +28,7 @@ extension UIColor {
         let pattern = "^(?:\(prefixesString))?(?:\(hexRangePattern){3}|\(hexRangePattern){6})$"
         let regExp = try! NSRegularExpression(pattern: pattern, options: [])
         
-        guard regExp.matchesInString(hexString, options: [], range: NSMakeRange(0, hexString.length)).count > 0 else {
+        guard regExp.matchesInString(hexString, options: [], range: NSRange(location: 0, length: hexString.length)).count > 0 else {
             self.init(CGColor: UIColor.clearColor().CGColor)
             return
         }
