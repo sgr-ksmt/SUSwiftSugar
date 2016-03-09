@@ -23,15 +23,15 @@ public extension EnhancedErrorType {
         return code
     }
     
-    var domain: String {
+    public var domain: String {
         return String(reflecting: self.dynamicType)
     }
     
-    var code: Int {
+    public var code: Int {
         return 0
     }
     
-    var userInfo: [NSObject: AnyObject]? {
+    public var userInfo: [NSObject: AnyObject]? {
         return nil
     }
     

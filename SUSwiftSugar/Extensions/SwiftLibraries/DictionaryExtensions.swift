@@ -6,31 +6,30 @@
 
 import Foundation
 
-extension Dictionary {
-    
-    func union(with: Dictionary) -> Dictionary {
+public extension Dictionary {
+    public func union(with: Dictionary) -> Dictionary {
         var tmp = self
         with.forEach {
             tmp.updateValue($0.1, forKey: $0.0)
         }
         return tmp
     }
-    
 }
 
-extension Dictionary where Value: Equatable {
-    func allKeysForValue(value: Value) -> [Key] {
+public extension Dictionary where Value: Equatable {
+    public func allKeysForValue(value: Value) -> [Key] {
         return self.flatMap { $0.1 == value ? $0.0 : nil }
     }
-    func keyForValue(value: Value) -> Key? {
+    
+    public func keyForValue(value: Value) -> Key? {
         return allKeysForValue(value).first
     }
 }
 
 
-func + <K, V>(lhs: Dictionary<K, V>, rhs: Dictionary<K, V>) -> Dictionary<K, V> {
+public func +<K, V>(lhs: Dictionary<K, V>, rhs: Dictionary<K, V>) -> Dictionary<K, V> {
     return lhs.union(rhs)
 }
-func += <K, V>(inout lhs: Dictionary<K, V>, rhs: Dictionary<K, V>) {
+public func +=<K, V>(inout lhs: Dictionary<K, V>, rhs: Dictionary<K, V>) {
     lhs = lhs + rhs
 }

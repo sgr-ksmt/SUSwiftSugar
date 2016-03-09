@@ -4,12 +4,12 @@
 import Foundation
 import UIKit
 
-extension UIView {
-    convenience init(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) {
+public extension UIView {
+    public convenience init(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) {
         self.init(frame: CGRect(x, y, width, height))
     }
 
-    var x: CGFloat {
+    public var x: CGFloat {
         get {
             return frame.origin.x
         }
@@ -18,7 +18,7 @@ extension UIView {
         }
     }
     
-    var y: CGFloat {
+    public var y: CGFloat {
         get {
             return frame.origin.y
         }
@@ -27,7 +27,7 @@ extension UIView {
         }
     }
     
-    var width: CGFloat {
+    public var width: CGFloat {
         get {
             return frame.size.width
         }
@@ -36,7 +36,7 @@ extension UIView {
         }
     }
     
-    var height: CGFloat {
+    public var height: CGFloat {
         get {
             return frame.size.height
         }
@@ -45,7 +45,7 @@ extension UIView {
         }
     }
     
-    var origin: CGPoint {
+    public var origin: CGPoint {
         get {
             return frame.origin
         }
@@ -54,7 +54,7 @@ extension UIView {
         }
     }
     
-    var size: CGSize {
+    public var size: CGSize {
         get {
             return frame.size
         }
@@ -63,7 +63,7 @@ extension UIView {
         }
     }
 
-    var top: CGFloat {
+    public var top: CGFloat {
         get {
             return y
         }
@@ -72,7 +72,7 @@ extension UIView {
         }
     }
     
-    var bottom: CGFloat {
+    public var bottom: CGFloat {
         get {
             return y + height
         }
@@ -81,7 +81,7 @@ extension UIView {
         }
     }
     
-    var left: CGFloat {
+    public var left: CGFloat {
         get {
             return x
         }
@@ -90,7 +90,7 @@ extension UIView {
         }
     }
     
-    var right: CGFloat {
+    public var right: CGFloat {
         get {
             return x + width
         }
@@ -100,8 +100,8 @@ extension UIView {
     }
 }
 
-extension UIView {
-    func setCornerRadius(radius radius: CGFloat) {
+public extension UIView {
+    public func setCornerRadius(radius radius: CGFloat) {
         layer.cornerRadius = radius
         layer.masksToBounds = true
     }
@@ -123,15 +123,15 @@ extension UIView {
     }
 }
 
-extension UIView {
-    func to_image() -> UIImage {
+public extension UIView {
+    public func to_image() -> UIImage {
         return to_image(bounds)
     }
-    func to_image(scale: CGFloat) -> UIImage {
+    public func to_image(scale: CGFloat) -> UIImage {
         return to_image(bounds, scale: scale)
     }
     
-    func to_image(rect: CGRect, scale: CGFloat = UIScreen.mainScreen().scale) -> UIImage {
+    public func to_image(rect: CGRect, scale: CGFloat = UIScreen.mainScreen().scale) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(rect.size, false, scale)
         let context = UIGraphicsGetCurrentContext()!
         CGContextTranslateCTM(context, -rect.origin.x, -rect.origin.y)
@@ -146,18 +146,18 @@ extension UIView {
     }
 }
 
-enum FadeAnimationType: NSTimeInterval {
+public enum FadeAnimationType: NSTimeInterval {
     case Fast = 0.15
     case Normal = 0.35
     case Slow = 1.0
 }
 
-extension UIView {
-    func fadeIn(type type: FadeAnimationType = .Normal, completion: (() -> Void)? = nil) {
+public extension UIView {
+    public func fadeIn(type type: FadeAnimationType = .Normal, completion: (() -> Void)? = nil) {
         fadeIn(duration: type.rawValue, completion: completion)
     }
     
-    func fadeIn(duration duration: NSTimeInterval, completion: (() -> Void)? = nil) {
+    public func fadeIn(duration duration: NSTimeInterval, completion: (() -> Void)? = nil) {
         alpha = 0.0
         hidden = false
         UIView.animateWithDuration(duration, animations: { [weak self] in
@@ -167,15 +167,15 @@ extension UIView {
         }
     }
     
-    func fadeOut(completion: (() -> Void)) {
+    public func fadeOut(completion: (() -> Void)) {
         fadeOut(type: .Normal, completion: completion)
     }
     
-    func fadeOut(type type: FadeAnimationType = .Normal, completion: (() -> Void)? = nil) {
+    public func fadeOut(type type: FadeAnimationType = .Normal, completion: (() -> Void)? = nil) {
         fadeOut(duration: type.rawValue, completion: completion)
     }
     
-    func fadeOut(duration duration: NSTimeInterval, completion: (() -> Void)? = nil) {
+    public func fadeOut(duration duration: NSTimeInterval, completion: (() -> Void)? = nil) {
         UIView.animateWithDuration(duration, animations: { [weak self] in
             self?.alpha = 0
         }) { [weak self] finished in

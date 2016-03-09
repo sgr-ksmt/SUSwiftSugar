@@ -5,23 +5,23 @@
 import Foundation
 import UIKit
 
-func == (lhs: UIColor, rhs: UIColor) -> Bool {
+public typealias RGBAColorSpace = (r: CGFloat, g:CGFloat, b: CGFloat, a: CGFloat)
+
+public func == (lhs: UIColor, rhs: UIColor) -> Bool {
     return lhs.isEqualToColor(rhs)
 }
 
-func != (lhs: UIColor, rhs: UIColor) -> Bool {
+public func != (lhs: UIColor, rhs: UIColor) -> Bool {
     return !(lhs == rhs)
 }
 
-typealias RGBAColorSpace = (r: CGFloat, g:CGFloat, b: CGFloat, a: CGFloat)
 
-func - (lhs: RGBAColorSpace, rhs: RGBAColorSpace) -> RGBAColorSpace {
+public func - (lhs: RGBAColorSpace, rhs: RGBAColorSpace) -> RGBAColorSpace {
     return (rhs.r - lhs.r, rhs.g - lhs.g, rhs.b - lhs.b, rhs.a - lhs.a)
 }
 
-extension UIColor {
-    
-    convenience init(var hexString: String, alpha: CGFloat = 1.0) {
+public extension UIColor {
+    public convenience init(var hexString: String, alpha: CGFloat = 1.0) {
         let prefixes = ["#", "0x", "0X"]
         let prefixesString = prefixes.joinWithSeparator("|")
         let hexRangePattern = "[0-9a-fA-F]"
@@ -49,13 +49,13 @@ extension UIColor {
         self.init(red: r, green: g, blue: b, alpha: alpha)
     }
 
-    var RGBA: RGBAColorSpace {
+    public var RGBA: RGBAColorSpace {
         var r: CGFloat = 0.0; var g: CGFloat = 0.0; var b: CGFloat = 0.0; var a: CGFloat = 0.0
         self.getRed(&r, green: &g, blue: &b, alpha: &a)
         return (r, g, b, a)
     }
     
-    var hexString: String {
+    public var hexString: String {
         let rgba = self.RGBA
         let hex = rgba.r * 0x10000 + rgba.g * 0x100 + rgba.b
         return Int(hex).hexString(bitSize: 6, uppercase: false)
@@ -65,7 +65,7 @@ extension UIColor {
     * Inspired by :
     * http://stackoverflow.com/questions/21622129/how-to-compare-two-uicolor-which-have-almost-same-shade-or-range-in-ios
     */
-    func isEqualToColor(color: UIColor, withTolerance t: CGFloat = 0.0) -> Bool {
+    public func isEqualToColor(color: UIColor, withTolerance t: CGFloat = 0.0) -> Bool {
         let csDiff = self.RGBA - color.RGBA
         return fabs(csDiff.r) <= t && fabs(csDiff.g) <= t && fabs(csDiff.b) <= t && fabs(csDiff.a) <= t
     }
