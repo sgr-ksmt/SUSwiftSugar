@@ -40,6 +40,8 @@
 		4DA57AC31C5E38D800E381AE /* SUSwiftSugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA57AB81C5E38D800E381AE /* SUSwiftSugar.framework */; };
 		4DA57AC81C5E38D800E381AE /* SUSwiftSugarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA57AC71C5E38D800E381AE /* SUSwiftSugarTests.swift */; };
 		4DABF40F1C8FB2B800F17262 /* EnhancedErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DABF40E1C8FB2B800F17262 /* EnhancedErrorType.swift */; };
+		4DD3CC221C9057E400211CC8 /* NSFileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3CC211C9057E400211CC8 /* NSFileManagerTests.swift */; };
+		4DD3CC241C905A6C00211CC8 /* FilePathConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3CC231C905A6C00211CC8 /* FilePathConvertible.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +91,8 @@
 		4DA57AC71C5E38D800E381AE /* SUSwiftSugarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUSwiftSugarTests.swift; sourceTree = "<group>"; };
 		4DA57AC91C5E38D800E381AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DABF40E1C8FB2B800F17262 /* EnhancedErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnhancedErrorType.swift; sourceTree = "<group>"; };
+		4DD3CC211C9057E400211CC8 /* NSFileManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFileManagerTests.swift; sourceTree = "<group>"; };
+		4DD3CC231C905A6C00211CC8 /* FilePathConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilePathConvertible.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +176,7 @@
 				4D09BFBC1C5E39DE00F50B59 /* EnumCountable.swift */,
 				4D09BFBD1C5E39DE00F50B59 /* Instantiatable.swift */,
 				4DABF40E1C8FB2B800F17262 /* EnhancedErrorType.swift */,
+				4DD3CC231C905A6C00211CC8 /* FilePathConvertible.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 				4D09BFD71C5E39F400F50B59 /* TypeNameTests.swift */,
 				4D09BFD81C5E39F400F50B59 /* UIColorExtensionsTests.swift */,
 				4D09BFD91C5E39F400F50B59 /* UIDeviceExtensionsTests.swift */,
+				4DD3CC211C9057E400211CC8 /* NSFileManagerTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -349,6 +355,7 @@
 				4D09BFBF1C5E39DE00F50B59 /* NSFileManagerExtensions.swift in Sources */,
 				4D09BFBE1C5E39DE00F50B59 /* NSBundleExtensions.swift in Sources */,
 				4D09BFCF1C5E39DE00F50B59 /* Instantiatable.swift in Sources */,
+				4DD3CC241C905A6C00211CC8 /* FilePathConvertible.swift in Sources */,
 				4DABF40F1C8FB2B800F17262 /* EnhancedErrorType.swift in Sources */,
 				4D09BFCB1C5E39DE00F50B59 /* UIViewExtensions.swift in Sources */,
 				4D09BFC81C5E39DE00F50B59 /* UIColorExtensions.swift in Sources */,
@@ -376,6 +383,7 @@
 				4D09BFDE1C5E39F400F50B59 /* NSObjectExtensionsTests.swift in Sources */,
 				4D09BFDB1C5E39F400F50B59 /* CGGeometryExtensionsTests.swift in Sources */,
 				4D09BFDA1C5E39F400F50B59 /* ArrayExtensionsTests.swift in Sources */,
+				4DD3CC221C9057E400211CC8 /* NSFileManagerTests.swift in Sources */,
 				4D09BFE21C5E39F400F50B59 /* UIDeviceExtensionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,71 +16,40 @@ public func NSCacheDirectory() -> String {
     return getNSDirectory(.CachesDirectory)
 }
 
-extension NSFileManager {
-    
-    enum CustomError: ErrorType {
-        case ConvertURLToPathError
+public extension NSFileManager {
+    public func fileExists(at path: FilePathConvertible) -> Bool {
+        return fileExistsAtPath(path.filePath)
     }
     
-    func forceMove(path: String, toPath: String) throws {
-        if fileExistsAtPath(toPath) {
-            try removeItemAtPath(toPath)
-        }
-        try moveItemAtPath(path, toPath: toPath)
-    }
-    
-    func forceCopy(path: String, toPath: String) throws {
-        if fileExistsAtPath(toPath) {
-            try removeItemAtPath(toPath)
-        }
-        try copyItemAtPath(path, toPath: toPath)
-    }
-    
-    func swap(path1 path1: String, path2: String) throws {
-        let tempPath = NSTemporaryDirectory().stringByAppendingPathComponent(".temp")
-        
-        if fileExistsAtPath(tempPath) {
-            try removeItemAtPath(tempPath)
-        }
-        
-        if fileExistsAtPath(path1) {
-            try moveItemAtPath(path1, toPath: tempPath)
-        }
-        if fileExistsAtPath(path2) {
-            try moveItemAtPath(path2, toPath: path1)
-        }
-        if fileExistsAtPath(tempPath) {
-            try moveItemAtPath(tempPath, toPath: path2)
-        }
-    }
-    
-    func forceMove(srcURL: NSURL, toURL: NSURL) throws {
-        guard let path = srcURL.path, toPath = toURL.path else {
-            throw CustomError.ConvertURLToPathError
-        }
-        try forceMove(path, toPath: toPath)
-    }
-    
-    func forceCopy(srcURL: NSURL, toURL: NSURL) throws {
-        guard let path = srcURL.path, toPath = toURL.path else {
-            throw CustomError.ConvertURLToPathError
-        }
-        try forceCopy(path, toPath: toPath)
-    }
-    
-    func swap(url1 url1: NSURL, url2: NSURL) throws {
-        guard let path1 = url1.path, path2 = url2.path else {
-            throw CustomError.ConvertURLToPathError
-        }
-        try swap(path1: path1, path2: path2)
-    }
-    
-    func addExcludedFromBackupToItemAtPath(path: String) throws {
-        try addExcludedFromBackupToItemAtURL(NSURL(fileURLWithPath: path))
+    public func fileExists(at path: FilePathConvertible, isDirectory: UnsafeMutablePointer<ObjCBool>) -> Bool {
+        return fileExistsAtPath(path.filePath, isDirectory: isDirectory)
     }
 
-    func addExcludedFromBackupToItemAtURL(fileURL: NSURL) throws {
-        try fileURL.setResourceValue(true, forKey: NSURLIsExcludedFromBackupKey)
+    
+    public func safeRemove(path: FilePathConvertible) {
+        _ = try? removeItemAtPath(path.filePath)
+    }
+    
+    public func forceMove(from: FilePathConvertible, to: FilePathConvertible) {
+        safeRemove(to)
+        _ = try? moveItemAtPath(from.filePath, toPath: to.filePath)
+    }
+    
+    public func forceCopy(from: FilePathConvertible, to: FilePathConvertible) {
+        safeRemove(to)
+        _ = try? copyItemAtPath(from.filePath, toPath: to.filePath)
+    }
+    
+    public func swap(path1: FilePathConvertible, and path2: FilePathConvertible) throws {
+        let tempPath: FilePathConvertible = NSTemporaryDirectory().stringByAppendingPathComponent(".temp")
+        
+        safeRemove(tempPath)
+        try [(path1, tempPath), (path2, path1), (tempPath, path2)].forEach {
+            try moveItemAtPath($0.0.filePath, toPath: $0.1.filePath)
+        }
     }
 
+    public func addExcludedFromBackupToItemAtURL(path: FilePathConvertible) throws {
+        try path.fileURL.setResourceValue(true, forKey: NSURLIsExcludedFromBackupKey)
+    }
 }

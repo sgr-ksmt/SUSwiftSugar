@@ -3,11 +3,11 @@
 
 import Foundation
 
-extension NSBundle {
-    func applicationVersion() -> String {
+public extension NSBundle {
+    public func applicationVersion() -> String {
         return objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
     }
-    func applicationBuildNumber() -> String {
+    public func applicationBuildNumber() -> String {
         return objectForInfoDictionaryKey("CFBundleVersion") as! String
     }
 }
