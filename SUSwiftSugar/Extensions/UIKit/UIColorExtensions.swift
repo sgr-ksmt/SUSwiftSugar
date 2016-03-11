@@ -5,7 +5,7 @@
 import Foundation
 import UIKit
 
-public typealias RGBAColorSpace = (r: CGFloat, g:CGFloat, b: CGFloat, a: CGFloat)
+public typealias RGBAColorSpace = (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat)
 
 public func == (lhs: UIColor, rhs: UIColor) -> Bool {
     return lhs.isEqualToColor(rhs)
@@ -61,10 +61,6 @@ public extension UIColor {
         return Int(hex).hexString(bitSize: 6, uppercase: false)
     }
     
-    /**
-    * Inspired by :
-    * http://stackoverflow.com/questions/21622129/how-to-compare-two-uicolor-which-have-almost-same-shade-or-range-in-ios
-    */
     public func isEqualToColor(color: UIColor, withTolerance t: CGFloat = 0.0) -> Bool {
         let csDiff = self.RGBA - color.RGBA
         return fabs(csDiff.r) <= t && fabs(csDiff.g) <= t && fabs(csDiff.b) <= t && fabs(csDiff.a) <= t

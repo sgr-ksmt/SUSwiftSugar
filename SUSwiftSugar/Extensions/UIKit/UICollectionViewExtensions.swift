@@ -44,7 +44,7 @@ public extension UICollectionView {
         registerClass(T.self, forSupplementaryViewOfKind: element.rawValue, withReuseIdentifier: type.className)
     }
     
-    public func dequeueReusableViewWithType<T: UICollectionReusableView>(type: T.Type, forIndexPath indexPath: NSIndexPath, element: ElementKind) -> T{
+    public func dequeueReusableViewWithType<T: UICollectionReusableView>(type: T.Type, forIndexPath indexPath: NSIndexPath, element: ElementKind) -> T {
         return dequeueReusableSupplementaryViewOfKind(element.rawValue, withReuseIdentifier: type.className, forIndexPath: indexPath) as! T
     }
 }
