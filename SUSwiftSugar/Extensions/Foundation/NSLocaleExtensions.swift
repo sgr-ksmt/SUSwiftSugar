@@ -8,15 +8,15 @@
 
 import Foundation
 
-extension NSLocale {
-    enum Type: String {
+public extension NSLocale {
+    public enum LocaleType: String {
         case en_US_POSIX
         case en_US
         case ja_JP
         case fr_FR
         case de_DE
     }
-    convenience init(type: Type) {
+    public convenience init(type: LocaleType) {
         self.init(localeIdentifier: type.rawValue)
     }
 }

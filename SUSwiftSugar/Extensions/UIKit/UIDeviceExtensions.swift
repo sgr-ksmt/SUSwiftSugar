@@ -61,9 +61,9 @@ private class DeviceIdentifiers {
 
 public struct DeviceModel {
 
-    private(set) public var type: DeviceType = .Unknown
-    private(set) public var identifier: String = ""
-    private(set) public var name: String = ""
+    public private(set) var type: DeviceType = .Unknown
+    public private(set) var identifier: String = ""
+    public private(set) var name: String = ""
     
     public init(identifier: String) {
         self.identifier = identifier
@@ -129,9 +129,9 @@ public struct DeviceModel {
     
 }
 
-extension UIDevice {
+public extension UIDevice {
     
-    func deviceModel() -> DeviceModel {
+    public func deviceModel() -> DeviceModel {
         /**
          * get identifier
          * inspired by :

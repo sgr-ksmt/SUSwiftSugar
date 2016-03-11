@@ -14,7 +14,7 @@ public protocol EnhancedErrorType: ErrorType, CustomStringConvertible {
     var userInfo: [NSObject: AnyObject]? { get }
 }
 
-extension EnhancedErrorType {
+public extension EnhancedErrorType {
     var _domain: String {
         return domain
     }
@@ -23,15 +23,15 @@ extension EnhancedErrorType {
         return code
     }
     
-    var domain: String {
+    public var domain: String {
         return String(reflecting: self.dynamicType)
     }
     
-    var code: Int {
+    public var code: Int {
         return 0
     }
     
-    var userInfo: [NSObject: AnyObject]? {
+    public var userInfo: [NSObject: AnyObject]? {
         return nil
     }
     
@@ -39,7 +39,7 @@ extension EnhancedErrorType {
         return NSError(domain: domain, code: code, userInfo: userInfo)
     }
     
-    var description: String {
+    public var description: String {
         return "\(toNSError())"
     }
 }

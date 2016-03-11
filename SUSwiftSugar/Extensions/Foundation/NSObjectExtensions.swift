@@ -3,14 +3,12 @@
 
 import Foundation
 
-extension NSObject {
-    
-    class var className: String {
+public extension NSObject {
+    public static var className: String {
         return TypeName(self)
     }
     
-    var className: String {
+    public var className: String {
         return self.dynamicType.className
     }
-    
 }

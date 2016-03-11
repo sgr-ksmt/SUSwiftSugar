@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-extension UIFont {
-    class func allFontNames() -> [String] {
-        return UIFont.familyNames().flatMap(UIFont.fontNamesForFamilyName).sort()
+public extension UIFont {
+    public class func allFontNames() -> [String] {
+        return familyNames().flatMap(fontNamesForFamilyName).sort()
     }
     
-    func changeFontSize(size: CGFloat) -> UIFont {
+    public func changeFontSize(size: CGFloat) -> UIFont {
         return UIFont(name: self.fontName, size: size)!
     }
 }
