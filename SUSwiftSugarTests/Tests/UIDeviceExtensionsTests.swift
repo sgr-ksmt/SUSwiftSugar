@@ -2,7 +2,7 @@
 //  UIDeviceExtensionsTests.swift
 
 import XCTest
-@testable import SUSwiftSugar
+import SUSwiftSugar
 
 class UIDeviceExtensionsTests: XCTestCase {
     

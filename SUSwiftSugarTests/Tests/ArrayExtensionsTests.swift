@@ -2,7 +2,7 @@
 //  ArrayExtensionTests.swift
 
 import XCTest
-@testable import SUSwiftSugar
+import SUSwiftSugar
 
 class ArrayExtensionTests: XCTestCase {
     

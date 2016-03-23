@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import SUSwiftSugar
+import SUSwiftSugar
 
 class SUSwiftSugarTests: XCTestCase {
     
