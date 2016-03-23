@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol RoutingProtocol {
-    typealias ParameterType = AnyObject
+    associatedtype ParameterType = AnyObject
     
     func presentViewController<To: RoutingProtocol where To: UIViewController>
         (viewController: To, parameter: To.ParameterType?, animated: Bool, completion: (() -> Void)?)
@@ -34,5 +34,4 @@ public extension RoutingProtocol where Self: UIViewController{
             viewController.setupWithParameter(parameter)
             self.navigationController?.pushViewController(viewController, animated: animated)
     }
-
 }

@@ -21,27 +21,28 @@ public func - (lhs: RGBAColorSpace, rhs: RGBAColorSpace) -> RGBAColorSpace {
 }
 
 public extension UIColor {
-    public convenience init(var hexString: String, alpha: CGFloat = 1.0) {
+    public convenience init(hexString: String, alpha: CGFloat = 1.0) {
+        var _hexString = hexString
         let prefixes = ["#", "0x", "0X"]
         let prefixesString = prefixes.joinWithSeparator("|")
         let hexRangePattern = "[0-9a-fA-F]"
         let pattern = "^(?:\(prefixesString))?(?:\(hexRangePattern){3}|\(hexRangePattern){6})$"
         let regExp = try! NSRegularExpression(pattern: pattern, options: [])
         
-        guard regExp.matchesInString(hexString, options: [], range: NSRange(location: 0, length: hexString.length)).count > 0 else {
+        guard regExp.matchesInString(_hexString, options: [], range: NSRange(location: 0, length: _hexString.length)).count > 0 else {
             self.init(CGColor: UIColor.clearColor().CGColor)
             return
         }
-        prefixes.forEach { hexString <-> ($0, "")}
+        prefixes.forEach { _hexString <-> ($0, "")}
         
-        let scanner = NSScanner(string: hexString)
+        let scanner = NSScanner(string: _hexString)
         var color: UInt32 = 0
         guard scanner.scanHexInt(&color) else {
             self.init(CGColor: UIColor.clearColor().CGColor)
             return
         }
         
-        let isHex6 = hexString.length == 6
+        let isHex6 = _hexString.length == 6
         let divisor: CGFloat = isHex6 ? 255.0 : 15.0
         let r = CGFloat((color & (isHex6 ? 0xFF0000 : 0xF00)) >> (isHex6 ? 16 : 8)) / divisor
         let g = CGFloat((color & (isHex6 ? 0x00FF00 : 0x0F0)) >> (isHex6 ? 8 : 4)) / divisor
