@@ -36,6 +36,7 @@
 		4D09BFE21C5E39F400F50B59 /* UIDeviceExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D09BFD91C5E39F400F50B59 /* UIDeviceExtensionsTests.swift */; };
 		4D3C38331C8F08C700A66CB6 /* NSLocaleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3C38321C8F08C700A66CB6 /* NSLocaleExtensions.swift */; };
 		4D3C38371C8F138400A66CB6 /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3C38361C8F138400A66CB6 /* UIFontExtensions.swift */; };
+		4D61EF6F1CA21DF1002C453C /* CustomXibReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D61EF6E1CA21DF1002C453C /* CustomXibReusable.swift */; };
 		4D684DAE1CA1B6C9001D1A75 /* RoutingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D684DAD1CA1B6C9001D1A75 /* RoutingProtocol.swift */; };
 		4D9649CA1C9301DF00150154 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9649C91C9301DF00150154 /* Operators.swift */; };
 		4DA57ABC1C5E38D800E381AE /* SUSwiftSugar.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DA57ABB1C5E38D800E381AE /* SUSwiftSugar.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -86,6 +87,7 @@
 		4D09BFD91C5E39F400F50B59 /* UIDeviceExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensionsTests.swift; sourceTree = "<group>"; };
 		4D3C38321C8F08C700A66CB6 /* NSLocaleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLocaleExtensions.swift; sourceTree = "<group>"; };
 		4D3C38361C8F138400A66CB6 /* UIFontExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtensions.swift; sourceTree = "<group>"; };
+		4D61EF6E1CA21DF1002C453C /* CustomXibReusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomXibReusable.swift; sourceTree = "<group>"; };
 		4D684DAD1CA1B6C9001D1A75 /* RoutingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutingProtocol.swift; sourceTree = "<group>"; };
 		4D9649C91C9301DF00150154 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		4DA57AB81C5E38D800E381AE /* SUSwiftSugar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SUSwiftSugar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				4D09BFBC1C5E39DE00F50B59 /* EnumCountable.swift */,
+				4D61EF6E1CA21DF1002C453C /* CustomXibReusable.swift */,
 				4D09BFBD1C5E39DE00F50B59 /* Instantiatable.swift */,
 				4D684DAD1CA1B6C9001D1A75 /* RoutingProtocol.swift */,
 				4DABF40E1C8FB2B800F17262 /* EnhancedErrorType.swift */,
@@ -357,6 +360,7 @@
 				4D09BFC61C5E39DE00F50B59 /* CGGeometryExtensions.swift in Sources */,
 				4D09BFCA1C5E39DE00F50B59 /* UITableViewExtensions.swift in Sources */,
 				4D09BFC51C5E39DE00F50B59 /* StringExtensions.swift in Sources */,
+				4D61EF6F1CA21DF1002C453C /* CustomXibReusable.swift in Sources */,
 				4D09BFC21C5E39DE00F50B59 /* DictionaryExtensions.swift in Sources */,
 				4D09BFBF1C5E39DE00F50B59 /* NSFileManagerExtensions.swift in Sources */,
 				4D09BFBE1C5E39DE00F50B59 /* NSBundleExtensions.swift in Sources */,
