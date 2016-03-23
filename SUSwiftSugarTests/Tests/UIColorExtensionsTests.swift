@@ -2,7 +2,7 @@
 //  UIColorExtensionsTests.swift
 
 import XCTest
-@testable import SUSwiftSugar
+import SUSwiftSugar
 
 class UIColorExtensionsTests: XCTestCase {
     

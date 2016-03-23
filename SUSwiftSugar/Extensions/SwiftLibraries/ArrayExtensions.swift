@@ -74,9 +74,10 @@ public extension Array {
     @warn_unused_result
     public func shuffled() -> [Element] {
         var result = self
-        for var j = result.count - 1; j > 0; j-- {
+        
+        (0..<result.count).reverse().forEach { j in
             let k = Int(arc4random_uniform(UInt32(j + 1)))
-            if j == k { continue }
+            if j == k { return }
             swap(&result[k], &result[j])
         }
         return result

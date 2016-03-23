@@ -75,11 +75,12 @@ public extension String {
 
 public extension String {
 
-    public subscript (var index: Int) -> Character {
+    public subscript (index: Int) -> Character {
+        var idx = index
         let distance = startIndex.distanceTo(endIndex)
-        index %= distance
-        if index < 0 { index += distance }
-        return self[startIndex.advancedBy(index)]
+        idx %= distance
+        if idx < 0 { idx += distance }
+        return self[startIndex.advancedBy(idx)]
     }
     
     public subscript(range: Range<Int>) -> String {

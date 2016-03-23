@@ -2,7 +2,7 @@
 //  TypeNameTests.swift
 
 import XCTest
-@testable import SUSwiftSugar
+import SUSwiftSugar
 
 class TestClass_Some: NSObject {}
 class TestClass_Fuga { class TestClass_Piyo { } }

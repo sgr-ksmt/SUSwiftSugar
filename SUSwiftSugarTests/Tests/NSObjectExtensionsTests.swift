@@ -2,7 +2,7 @@
 //  NSObjectExtensionsTests.swift
 
 import XCTest
-@testable import SUSwiftSugar
+import SUSwiftSugar
 
 class TestClass_Hoge: NSObject {
 }

@@ -2,7 +2,7 @@
 //  IntExtensionsTest.swift
 
 import XCTest
-@testable import SUSwiftSugar
+import SUSwiftSugar
 
 class IntExtensionsTest: XCTestCase {
     
