@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = "SUSwiftSugar"
-  s.version  = "0.1.0"
+  s.version  = "1.1.2"
   s.summary  = "swift sugar"
   s.homepage = "https://github.com/sgr-ksmt/#{s.name}"
   s.author = {
