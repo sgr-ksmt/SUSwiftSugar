@@ -1,8 +1,5 @@
 //
 //  DictionaryExtensions.swift
-//
-//  Created by Suguru Kishimoto on 2015/12/06.
-//  Copyright © 2015 SFIDANTE Inc. All rights reserved.
 
 import Foundation
 

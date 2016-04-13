@@ -1,10 +1,5 @@
 //
 //  EnumCountableTests.swift
-//  SUSwiftSugar
-//
-//  Created by Suguru Kishimoto on 2015/12/02.
-//  Copyright © 2015年 SFIDANTE Inc. All rights reserved.
-//
 
 import XCTest
 import SUSwiftSugar

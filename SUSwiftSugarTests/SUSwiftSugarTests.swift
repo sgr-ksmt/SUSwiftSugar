@@ -1,10 +1,5 @@
 //
 //  SUSwiftSugarTests.swift
-//  SUSwiftSugarTests
-//
-//  Created by Suguru Kishimoto on 2016/01/31.
-//
-//
 
 import XCTest
 import SUSwiftSugar

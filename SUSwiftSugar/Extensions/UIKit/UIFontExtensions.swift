@@ -1,10 +1,5 @@
 //
 //  UIFontExtensions.swift
-//  SUSwiftSugar
-//
-//  Created by Suguru Kishimoto on 2016/03/08.
-//
-//
 
 import Foundation
 import UIKit

@@ -1,10 +1,5 @@
 //
 //  FilePathConvertible.swift
-//  SUSwiftSugar
-//
-//  Created by Suguru Kishimoto on 2016/03/09.
-//
-//
 
 import Foundation
 

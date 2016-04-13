@@ -1,6 +1,5 @@
 //
 //  UIColorExtensions.swift
-//  SFISwiftExtensions
 
 import Foundation
 import UIKit
