@@ -2,6 +2,7 @@
 //  CustomXibReusable.swift
 
 import Foundation
+import UIKit
 
 protocol CustomXibReusable {
     var vPadding: CGFloat { get }
@@ -22,19 +23,14 @@ extension CustomXibReusable where Self: UIView {
     var hPadding: CGFloat { return 0.0 }
     
     var mainView: Self {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.mainViewKey) as! Self
-        }
-        set {
-            objc_setAssociatedObject(self, &AssociatedKeys.mainViewKey, newValue, .OBJC_ASSOCIATION_ASSIGN)
-        }
+        return viewWithTag(MainViewTag) as! Self
     }
     
     func loadFromNib() {
         let view = NSBundle
             .mainBundle()
             .loadNibNamed(String(Self), owner: self, options: nil)
-            .first as! UIView
+            .first as! Self
         addSubview(view)
         setupConstraints(view)
     }
