@@ -24,9 +24,27 @@ public extension Dictionary where Value: Equatable {
 }
 
 
-public func +<K, V>(lhs: Dictionary<K, V>, rhs: Dictionary<K, V>) -> Dictionary<K, V> {
+func + <K, V>(lhs: [K: V], rhs: [K: V]) -> [K: V] {
     return lhs.union(rhs)
 }
-public func +=<K, V>(inout lhs: Dictionary<K, V>, rhs: Dictionary<K, V>) {
+
+func += <K, V>(inout lhs: [K: V], rhs: [K: V]) {
+    lhs = lhs + rhs
+}
+
+func + <K, V>(lhs: [K: V]?, rhs: [K: V]?) -> [K: V]? {
+    switch (lhs, rhs) {
+    case (.Some(let l), .Some(let r)):
+        return l + r
+    case (.Some(let l), .None):
+        return l
+    case (.None, .Some(let r)):
+        return r
+    default:
+        return nil
+    }
+}
+
+func += <K, V>(inout lhs: [K: V]?, rhs: [K: V]?) {
     lhs = lhs + rhs
 }

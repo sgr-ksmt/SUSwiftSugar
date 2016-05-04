@@ -100,7 +100,7 @@ public extension Array where Element: Equatable {
     public func unique() -> [Element] {
         var r = [Element]()
         for i in self {
-            r += !r.contains(i) ? [i]:[]
+            r += !r.contains(i) ? [i] : []
         }
         return r
     }

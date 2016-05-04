@@ -4,7 +4,7 @@
 import Foundation
 
 public protocol RoutingProtocol {
-    associatedtype ParameterType = AnyObject
+    associatedtype ParameterType = Any
     
     func presentViewController<To: RoutingProtocol where To: UIViewController>
         (viewController: To, parameter: To.ParameterType?, animated: Bool, completion: (() -> Void)?)

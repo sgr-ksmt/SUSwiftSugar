@@ -98,6 +98,39 @@ public extension UIView {
             x = newValue - width
         }
     }
+    
+    @nonobjc public var center: CGPoint {
+        get {
+            return CGPoint(frame.midX, frame.midY)
+        }
+        set {
+            self.frame = CGRect(
+                CGPoint(
+                    newValue.x - width / 2,
+                    newValue.y - height / 2
+                ),
+                size
+            )
+        }
+    }
+    
+    public var centerX: CGFloat {
+        get {
+            return frame.midX
+        }
+        set {
+            self.center = CGPoint(newValue, centerY)
+        }
+    }
+    
+    public var centerY: CGFloat {
+        get {
+            return frame.midY
+        }
+        set {
+            self.center = CGPoint(centerX, newValue)
+        }
+    }
 }
 
 public extension UIView {

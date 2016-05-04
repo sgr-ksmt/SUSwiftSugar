@@ -29,6 +29,7 @@ public extension NibInstantiatable where Self: UIView {
 
 public protocol StoryboardInstantiatable {
     static var storyboardName: String { get }
+    static var viewControllerIdentifier: String? { get }
 }
 
 extension StoryboardInstantiatable where Self: UIViewController {
@@ -36,43 +37,39 @@ extension StoryboardInstantiatable where Self: UIViewController {
         return TypeName(Self)
     }
     
+    public static var viewControllerIdentifier: String? {
+        return nil
+    }
+    
     public static func instantiate() -> Self {
-        return instantiateWithName(storyboardName)
+        return instantiateWithStoryboardName(storyboardName, viewControllerIdentifier: viewControllerIdentifier)
     }
     
-    public static func instantiateWithBundle(bundle: NSBundle) -> Self {
-        return instantiateWithName(storyboardName, bundle: bundle)
-    }
-    
-    public static func instantiateWithName(name: String, bundle: NSBundle? = nil) -> Self {
+    public static func instantiateWithStoryboardName(name: String, viewControllerIdentifier: String? = nil, bundle: NSBundle? = nil) -> Self {
         let storyboard = UIStoryboard(name: name, bundle: bundle)
-        return storyboard.instantiateInitialViewController() as! Self
+        if let viewControllerIdentifier = viewControllerIdentifier {
+            return storyboard.instantiateViewControllerWithIdentifier(viewControllerIdentifier) as! Self
+        } else {
+            return storyboard.instantiateInitialViewController() as! Self
+        }
     }
 }
 
 public extension StoryboardInstantiatable where Self: UIViewController, Self: RoutingProtocol {
-    
+
     public static func instantiate() -> Self {
-        fatalError("Use instantiate(param:) instead.")
+        fatalError("Use instantiate(parameter:) instead.")
     }
     
-    public static func instantiateWithBundle(bundle: NSBundle?) -> Self {
-        fatalError("Use instantiate(_:param:) instead.")
-    }
-    
-    public static func instantiateWithName(name: String, bundle: NSBundle? = nil) -> Self {
-        fatalError("Use instantiate(_:bundle:param:) instead.")
+    public static func instantiateWithStoryboardName(name: String, viewControllerIdentifier: String? = nil, bundle: NSBundle? = nil) -> Self {
+        fatalError("Use instantiateWithStoryboardName(_:viewControllerIdentifier:bundle:parameter:) instead.")
     }
     
     public static func instantiate(parameter parameter: ParameterType?) -> Self {
-        return instantiateWithName(storyboardName, parameter: parameter)
+        return instantiateWithStoryboardName(storyboardName, viewControllerIdentifier: viewControllerIdentifier, parameter: parameter)
     }
     
-    public static func instantiateWithBundle(bundle: NSBundle?, parameter: ParameterType?) -> Self {
-        return instantiateWithName(storyboardName, bundle: bundle, parameter: parameter)
-    }
-    
-    public static func instantiateWithName(name: String, bundle: NSBundle? = nil, parameter: ParameterType?) -> Self {
+    public static func instantiateWithStoryboardName(name: String, viewControllerIdentifier: String? = nil, bundle: NSBundle? = nil, parameter: ParameterType?) -> Self {
         let storyboard = UIStoryboard(name: name, bundle: bundle)
         let viewControler = storyboard.instantiateInitialViewController() as! Self
         viewControler.setupWithParameter(parameter)
