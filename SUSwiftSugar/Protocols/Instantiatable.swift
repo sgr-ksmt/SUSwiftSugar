@@ -6,74 +6,75 @@ import UIKit
 
 public protocol NibInstantiatable {
     static var nibName: String { get }
+    static var bundle: NSBundle? { get }
 }
 
 public extension NibInstantiatable where Self: UIView {
     public static var nibName: String {
-        return TypeName(Self)
+        return String(self)
+    }
+    
+    public static var bundle: NSBundle? {
+        return nil
     }
     
     public static func instantiate() -> Self {
-        return instantiateWithName(nibName)
-    }
-    
-    public static func instantiateWithOwner(owner: AnyObject) -> Self {
-        return instantiateWithName(nibName, owner: owner)
-    }
-    
-    public static func instantiateWithName(name: String, owner: AnyObject? = nil) -> Self {
-        let nib = UINib(nibName: name, bundle: nil)
-        return nib.instantiateWithOwner(owner, options: nil).first as! Self
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        guard let view = nib.instantiateWithOwner(nil, options: nil).first as? Self else {
+            fatalError([
+                "Failed to load viewcontroller from nib.",
+                "nib: \(nibName), bundle: \(bundle)"
+                ].joinWithSeparator(" ")
+            )
+        }
+        return view
     }
 }
 
 public protocol StoryboardInstantiatable {
     static var storyboardName: String { get }
     static var viewControllerIdentifier: String? { get }
+    static var bundle: NSBundle? { get }
 }
 
 extension StoryboardInstantiatable where Self: UIViewController {
     public static var storyboardName: String {
-        return TypeName(Self)
+        return String(self)
     }
     
     public static var viewControllerIdentifier: String? {
         return nil
     }
     
-    public static func instantiate() -> Self {
-        return instantiateWithStoryboardName(storyboardName, viewControllerIdentifier: viewControllerIdentifier)
+    public static var bundle: NSBundle? {
+        return nil
     }
     
-    public static func instantiateWithStoryboardName(name: String, viewControllerIdentifier: String? = nil, bundle: NSBundle? = nil) -> Self {
-        let storyboard = UIStoryboard(name: name, bundle: bundle)
-        if let viewControllerIdentifier = viewControllerIdentifier {
-            return storyboard.instantiateViewControllerWithIdentifier(viewControllerIdentifier) as! Self
-        } else {
-            return storyboard.instantiateInitialViewController() as! Self
+    public static func instantiate() -> Self {
+        let loadViewController = { () -> UIViewController? in
+            let storyboard = UIStoryboard(name: storyboardName, bundle: bundle)
+            if let viewControllerIdentifier = viewControllerIdentifier {
+                return storyboard.instantiateViewControllerWithIdentifier(viewControllerIdentifier)
+            } else {
+                return storyboard.instantiateInitialViewController()
+            }
         }
+        
+        guard let viewController = loadViewController() as? Self else {
+            fatalError([
+                "Failed to load viewcontroller from storyboard.",
+                "storyboard: \(storyboardName), viewControllerID: \(viewControllerIdentifier), bundle: \(bundle)"
+                ].joinWithSeparator(" ")
+            )
+        }
+        return viewController
     }
 }
 
 public extension StoryboardInstantiatable where Self: UIViewController, Self: RoutingProtocol {
-
-    public static func instantiate() -> Self {
-        fatalError("Use instantiate(parameter:) instead.")
-    }
-    
-    public static func instantiateWithStoryboardName(name: String, viewControllerIdentifier: String? = nil, bundle: NSBundle? = nil) -> Self {
-        fatalError("Use instantiateWithStoryboardName(_:viewControllerIdentifier:bundle:parameter:) instead.")
-    }
-    
     public static func instantiate(parameter parameter: ParameterType?) -> Self {
-        return instantiateWithStoryboardName(storyboardName, viewControllerIdentifier: viewControllerIdentifier, parameter: parameter)
+        let viewController = instantiate() as Self
+        viewController.setupWithParam(parameter)
+        return viewController
     }
-    
-    public static func instantiateWithStoryboardName(name: String, viewControllerIdentifier: String? = nil, bundle: NSBundle? = nil, parameter: ParameterType?) -> Self {
-        let storyboard = UIStoryboard(name: name, bundle: bundle)
-        let viewControler = storyboard.instantiateInitialViewController() as! Self
-        viewControler.setupWithParameter(parameter)
-        return viewControler
-    }
-    
 }
