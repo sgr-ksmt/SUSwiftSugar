@@ -74,7 +74,7 @@ extension StoryboardInstantiatable where Self: UIViewController {
 public extension StoryboardInstantiatable where Self: UIViewController, Self: RoutingProtocol {
     public static func instantiate(parameter parameter: ParameterType?) -> Self {
         let viewController = instantiate() as Self
-        viewController.setupWithParam(parameter)
+        viewController.setupWithParameter(parameter)
         return viewController
     }
 }

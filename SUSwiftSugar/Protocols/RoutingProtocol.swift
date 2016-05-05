@@ -14,7 +14,7 @@ public protocol RoutingProtocol {
 }
 
 public extension RoutingProtocol where Self: UIViewController {
-    func setupWithParam(params: ParameterType?) {
+    func setupWithParameter(params: ParameterType?) {
     
     }
     
