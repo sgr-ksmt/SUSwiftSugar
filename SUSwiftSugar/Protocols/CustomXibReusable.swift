@@ -24,15 +24,15 @@ extension CustomXibReusable where Self: UIView {
         return String(self)
     }
     
-    var mainView: Self {
-        return viewWithTag(MainViewTag) as! Self
+    var mainView: UIView {
+        return viewWithTag(MainViewTag)!
     }
     
     func loadFromNib() {
         let view = NSBundle
             .mainBundle()
             .loadNibNamed(nibName, owner: self, options: nil)
-            .first as! Self
+            .first as! UIView
         addSubview(view)
         setupConstraints(view)
     }
