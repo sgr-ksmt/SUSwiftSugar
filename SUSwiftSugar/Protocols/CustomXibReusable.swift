@@ -7,8 +7,7 @@ import UIKit
 protocol CustomXibReusable {
     var vPadding: CGFloat { get }
     var hPadding: CGFloat { get }
-    init(frame: CGRect)
-    init?(coder aDecoder: NSCoder)
+    var nibName: String { get }
 }
 
 private let MainViewTag = 1 << 16
@@ -21,6 +20,9 @@ private struct AssociatedKeys {
 extension CustomXibReusable where Self: UIView {
     var vPadding: CGFloat { return 0.0 }
     var hPadding: CGFloat { return 0.0 }
+    var nibName: String {
+        return String(self)
+    }
     
     var mainView: Self {
         return viewWithTag(MainViewTag) as! Self
@@ -29,7 +31,7 @@ extension CustomXibReusable where Self: UIView {
     func loadFromNib() {
         let view = NSBundle
             .mainBundle()
-            .loadNibNamed(String(Self), owner: self, options: nil)
+            .loadNibNamed(nibName, owner: self, options: nil)
             .first as! Self
         addSubview(view)
         setupConstraints(view)
