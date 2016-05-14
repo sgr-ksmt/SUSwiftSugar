@@ -8,18 +8,18 @@
 
 import Foundation
 
-protocol URLConvertible {
+public protocol URLConvertible {
     var url: NSURL { get }
 }
 
 extension String: URLConvertible {
-    var url: NSURL {
+    public var url: NSURL {
         return NSURL(string: self)!
     }
 }
 
 extension NSURL: URLConvertible {
-    var url: NSURL {
+    public var url: NSURL {
         return self
     }
 }
