@@ -21,7 +21,7 @@ extension CustomXibReusable where Self: UIView {
     var vPadding: CGFloat { return 0.0 }
     var hPadding: CGFloat { return 0.0 }
     var nibName: String {
-        return String(self)
+        return String(self.dynamicType)
     }
     
     var mainView: UIView {
